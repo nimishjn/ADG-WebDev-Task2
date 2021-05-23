@@ -1,1 +1,118 @@
-https://github.com/nimishjn/ADG-WebDev-Task2
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  color: white;
+}
+
+body {
+  background-color: black;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.add-task {
+  margin: 5%;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+form input,
+button {
+  width: 300px;
+  height: 40px;
+  margin: 10px;
+  border: none;
+  text-align: center;
+  font-size: 20px;
+}
+
+form input {
+  background-color: rgba(194, 12, 12, 0.445);
+  color: white;
+  border-bottom: 3px solid white;
+}
+
+form input::placeholder,
+::-webkit-datetime-edit,
+::-webkit-calendar-picker-indicator {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 20px;
+}
+
+form input:focus {
+  border-color: royalblue;
+  transition: 0.25s;
+  outline: none;
+}
+
+form button {
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+form button:hover {
+  background-color: royalblue;
+  transition: 0.25s;
+  color: white;
+  cursor: pointer;
+}
+
+.display-task {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.task-card {
+    position: relative;
+    width: 250px;
+    height: 150px;
+    margin:20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+
+.task-card .close-button {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    height: 15px;
+    width: 15px;
+    border-radius: 10px;
+    margin: 0;
+    background-color: crimson;
+    font-size: 12px;
+}
+
+.task-card .close-button:hover {
+    cursor: pointer;
+}
+
+.task-card h1 {
+    height: 150px;
+}
+
+.task-card h2 {
+    font-weight: normal;
+}
