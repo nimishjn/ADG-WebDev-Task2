@@ -10,8 +10,9 @@
   <body>
     <div class="main-container">
       <div class="add-task">
-        <form action="#">
+        <form id="app-expense" name="add-expense" onsubmit="event.preventDefault(); ">
           <input
+            id="description"
             type="text"
             name="Description"
             placeholder="Description"
@@ -21,6 +22,7 @@
             autofocus
           />
           <input
+            id="expense"
             type="number"
             name="Expense"
             placeholder="Expense Amount"
@@ -28,73 +30,23 @@
             onblur="(this.placeholder='Expense Amount')"
             required
           />
-          <input type="date" name="Date" placeholder="dd/mm/yyyy" required />
-          <button type="submit">Add</button>
+          <input id="date" type="date" name="Date" placeholder="dd/mm/yyyy" required />
+          <button type="button" onclick="formSubmit()">Add</button>
         </form>
       </div>
-      <div class="display-task">
-          <div class="task-card">
+      <div class="total-expense">
+        <p id="total-expense" class="total-expenditure">Rs 0</p>
+        <button class="delete-all">&#215</button>
+      </div>
+      <div class="display-task" id="all-tasks">
+          <!-- <div class="task-card">
               <button class="close-button" aria-label="Close">&#215</button>
               <h1>Description of the expenditure</h1>
-              <h2>Expenditure: $100</h2>
+              <h2>Expenditure: Rs 100</h2>
               <h2>Date: 20/10/2020</h2>
-          </div>
-          <div class="task-card">
-            <button class="close-button" aria-label="Close">&#215</button>
-            <h1>Description of the expenditure</h1>
-            <h2>Expenditure: $100</h2>
-            <h2>Date: 20/10/2020</h2>
-        </div>
-        <div class="task-card">
-            <button class="close-button" aria-label="Close">&#215</button>
-            <h1>Description of the expenditure</h1>
-            <h2>Expenditure: $100</h2>
-            <h2>Date: 20/10/2020</h2>
-        </div>
-        <div class="task-card">
-            <button class="close-button" aria-label="Close">&#215</button>
-            <h1>Description of the expenditure</h1>
-            <h2>Expenditure: $100</h2>
-            <h2>Date: 20/10/2020</h2>
-        </div>
-        <div class="task-card">
-            <button class="close-button" aria-label="Close">&#215</button>
-            <h1>Description of the expenditure</h1>
-            <h2>Expenditure: $100</h2>
-            <h2>Date: 20/10/2020</h2>
-        </div>
-        <div class="task-card">
-            <button class="close-button" aria-label="Close">&#215</button>
-            <h1>Description of the expenditure</h1>
-            <h2>Expenditure: $100</h2>
-            <h2>Date: 20/10/2020</h2>
-        </div>
-        <div class="task-card">
-            <button class="close-button" aria-label="Close">&#215</button>
-            <h1>Description of the expenditure</h1>
-            <h2>Expenditure: $100</h2>
-            <h2>Date: 20/10/2020</h2>
-        </div>
-        <div class="task-card">
-            <button class="close-button" aria-label="Close">&#215</button>
-            <h1>Description of the expenditure</h1>
-            <h2>Expenditure: $100</h2>
-            <h2>Date: 20/10/2020</h2>
-        </div>
-        <div class="task-card">
-            <button class="close-button" aria-label="Close">&#215</button>
-            <h1>Description of the expenditure</h1>
-            <h2>Expenditure: $100</h2>
-            <h2>Date: 20/10/2020</h2>
-        </div>
-        <div class="task-card">
-            <button class="close-button" aria-label="Close">&#215</button>
-            <h1>Description of the expenditure</h1>
-            <h2>Expenditure: $100</h2>
-            <h2>Date: 20/10/2020</h2>
-        </div>
-        
+          </div> -->
       </div>
     </div>
+    <script src="./main.js"></script>
   </body>
 </html>

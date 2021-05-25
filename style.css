@@ -18,6 +18,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 .add-task {
@@ -30,6 +31,7 @@ form {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 form input,
@@ -73,46 +75,103 @@ form button:hover {
   cursor: pointer;
 }
 
+.total-expense {
+  position: relative;
+  height: 50px;
+  width: 95%;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: white;
+  color: black;
+}
+
+.delete-all {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border-radius: 20px;
+  background-color: red;
+  color: white;
+  width: 25px;
+  height: 25px;
+  margin: 0;
+  font-size: 20px;
+}
+
+.delete-all:hover {
+  cursor: pointer;
+  content: "Delete all" !important;
+  width: 120px;
+  transition: 0.5s;
+}
+
+.delete-all:hover::after {
+  content: "Delete all" !important;
+}
+
 .display-task {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    flex-wrap: wrap;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: 2px solid white;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .task-card {
-    position: relative;
-    width: 250px;
-    height: 150px;
-    margin:20px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
+  position: relative;
+  width: 250px;
+  height: 150px;
+  margin: 20px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
 }
 
 .task-card .close-button {
-    position: absolute;
-    top: 3px;
-    right: 3px;
-    height: 15px;
-    width: 15px;
-    border-radius: 10px;
-    margin: 0;
-    background-color: crimson;
-    font-size: 12px;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  height: 15px;
+  width: 15px;
+  border-radius: 10px;
+  margin: 0;
+  background-color: crimson;
+  font-size: 12px;
 }
 
 .task-card .close-button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .task-card h1 {
-    height: 150px;
+  height: 150px;
 }
 
 .task-card h2 {
-    font-weight: normal;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 1100px) {
+  form {
+    flex-direction: column;
+  }
+
+  form input,
+  button {
+    width: 95%;
+    height: 40px;
+    margin: 10px;
+    border: none;
+    text-align: center;
+    font-size: 20px;
+  }
 }
