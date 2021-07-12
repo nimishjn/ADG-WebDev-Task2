@@ -82,3 +82,13 @@ function deleteElement(event)
         expenses.splice(index,1);
     document.getElementById('all-tasks').removeChild(task);
 }
+
+function exportExpenditure() {
+    const dataStr = JSON.stringify(Object.assign({}, expenses));
+    let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+    let exportFileDefaultName = 'data.json';
+    let linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+}
