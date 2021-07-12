@@ -1,5 +1,15 @@
 var expenses = [];
 
+window.addEventListener("DOMContentLoaded", function() {
+    loadExpense();
+}, false);
+
+function loadExpense() {
+    var exp = JSON.parse(localStorage.getItem("expenses"));
+    for(var i = 0; i < exp.length; i++)
+        addTasks(exp[i]);
+}
+
 function totalExpense() {
     total = 0;
     for(var i in expenses) {
@@ -11,6 +21,7 @@ function totalExpense() {
 function updateExpense() {
     var expense = totalExpense();
     document.getElementById('total-expense').innerHTML = `Rs ${expense}`;
+    localStorage.setItem("expenses", JSON.stringify(expenses));
 }
 
 function addTasks(e) {
@@ -26,7 +37,6 @@ function addTasks(e) {
     <h2><b>Expenditure:</b> Rs ${e.expense}</h2>
     <h2><b>Date:</b> ${e.date}</h2>
     `;
-    console.log(e);
     document.getElementById('all-tasks').appendChild(element);
     updateExpense();
 }
@@ -53,7 +63,7 @@ function formSubmit() {
     const info = {
         key: key,
         description: desc,
-        expense: parseInt(amt),
+        expense: parseFloat(amt),
         date: dat
     };
 
@@ -78,9 +88,11 @@ function deleteElement(event)
     var id = event.toElement.name;
     var task = document.getElementById(id);
     var index = expenses.findIndex(a => a.key === id);
-    if(index != -1)
+    if(index != -1) {
         expenses.splice(index,1);
-    document.getElementById('all-tasks').removeChild(task);
+        document.getElementById('all-tasks').removeChild(task);
+        updateExpense();
+    } 
 }
 
 function exportExpenditure() {

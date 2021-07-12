@@ -18,7 +18,7 @@
     <div class="main-container">
       <h1 class="main-heading">Expense Tracker</h1>
       <div class="add-task">
-        <form id="app-expense" name="add-expense">
+        <form action="#total-expense" id="app-expense" name="add-expense" onsubmit="formSubmit()">
           <input
             id="description"
             type="text"
@@ -39,7 +39,7 @@
             required
           />
           <input id="date" type="date" name="Date" placeholder="dd/mm/yyyy" required />
-          <button type="submit" onclick="formSubmit()">Add</button>
+          <button type="submit">Add</button>
         </form>
       </div>
       <div class="total-expense">
