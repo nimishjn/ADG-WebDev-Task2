@@ -13,34 +13,72 @@ function updateExpense() {
     document.getElementById('total-expense').innerHTML = `Rs ${expense}`;
 }
 
-function updateTasks() {
-    document.getElementById('all-tasks').innerHTML = "";
-    for(var i in expenses) {
-        var x = expenses[i];
-        const element = document.createElement("div");
-        element.classList.add('task-card');
-        element.id = i;
-        element.innerHTML = `
-        <button class="close-button" aria-label="Close">&#215</button>
-        <h1>${x.description}</h1>
-        <h2>Expenditure: Rs ${x.expense}</h2>
-        <h2>Date: ${x.date}</h2>
-        `;
-        console.log(element);
-        document.getElementById('all-tasks').appendChild(element);
+function addTasks(e) {
+    expenses.push(e);
+    // Create an element with unique id
+    const element = document.createElement("div");
+    element.classList.add('task-card');
+    element.id = e.key;
+    element.innerHTML = `
+    <button name=${e.key} onclick="deleteElement(event)" class="close-button" aria-label="Close">&#215</button>
+    <p>Description:</p>
+    <h1>${e.description}</h1>
+    <h2><b>Expenditure:</b> Rs ${e.expense}</h2>
+    <h2><b>Date:</b> ${e.date}</h2>
+    `;
+    console.log(e);
+    document.getElementById('all-tasks').appendChild(element);
+    updateExpense();
+}
+
+function createKey()
+{
+    var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var result = '';
+    for ( var i = 0; i < 10; i++ ) {
+        result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
     }
+    for ( var i = 0; i < expenses.length; i++){
+        if(expenses.key === result)
+            createKey();
+    }
+    return result;
 }
 
 function formSubmit() {
     desc = document.getElementById('description').value;
     amt = document.getElementById('expense').value;
     dat = document.getElementById('date').value;
-    expenses.push({
+    var key = createKey();
+    const info = {
+        key: key,
         description: desc,
         expense: parseInt(amt),
         date: dat
-    });
-    updateTasks();
-    updateExpense();
-    document.getElementById("add-expense").reset();
+    };
+
+    if(amt > 0) {
+        addTasks(info);
+    }
+
+    document.getElementById('app-expense').reset();
+}
+
+function deleteAll()
+{
+    if(confirm('Are you sure you want delete everything?')) {
+        expenses = [];
+        updateExpense();
+        document.getElementById('all-tasks').innerHTML = "";
+    }
+}
+
+function deleteElement(event)
+{
+    var id = event.toElement.name;
+    var task = document.getElementById(id);
+    var index = expenses.findIndex(a => a.key === id);
+    if(index != -1)
+        expenses.splice(index,1);
+    document.getElementById('all-tasks').removeChild(task);
 }
